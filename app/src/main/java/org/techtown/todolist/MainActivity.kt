@@ -12,16 +12,27 @@ import java.nio.file.Files.size
 class MainActivity : AppCompatActivity(),MyRecyclerInterface {
     val TAG: String = "로그"
     //데이터를 담을 그릇 배열
-    var modelList = ArrayList<MyModel>()
     object list{
         var List = ArrayList<MyModel>()
 
     }
     private lateinit var myRecyclerAdapter: MyRecyclerAdapter
-    override fun onResume() {
-        super.onResume()
-        Log.d(TAG,"MainActivity - onResume() called")
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+
+        floatingActionButton.setOnClickListener {
+            onfabclicked()
+        }
+
+        Log.d(TAG,"MainActivity - onCreate() called")
+
+
         Log.d(TAG,"MainActivity - modelList.size2: ${list.List.size}")
+
+
         //어답터 인스턴스 생성
         myRecyclerAdapter = MyRecyclerAdapter(this)
 
@@ -35,29 +46,14 @@ class MainActivity : AppCompatActivity(),MyRecyclerInterface {
             adapter = myRecyclerAdapter
         }
     }
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-
-        floatingActionButton.setOnClickListener {
-            onfabclicked()
-        }
-
-        btn.setOnClickListener{
-            onfabclicked()
-        }
-
-        Log.d(TAG,"MainActivity - onCreate() called")
-
-        Log.d(TAG,"MainActivity - modelList.size1 : ${this.modelList.size}")
+    override fun onResume() {
+        super.onResume()
+        Log.d(TAG,"MainActivity - onResume() called")
         Log.d(TAG,"MainActivity - modelList.size2: ${list.List.size}")
-
-
         //어답터 인스턴스 생성
         myRecyclerAdapter = MyRecyclerAdapter(this)
 
-        myRecyclerAdapter.submitList(this.modelList)
+        myRecyclerAdapter.submitList(list.List)
 
         //리사이클러뷰 설정
         my_recycler_view.apply {
