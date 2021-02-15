@@ -18,6 +18,7 @@ class AddMemo : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_memo)
 
+
        save.setOnClickListener {
            Log.d(TAG,"AddMemo - save_btn-clicked called")
            title = edit_title.getText().toString()

@@ -23,6 +23,8 @@ class MainActivity : AppCompatActivity(),MyRecyclerInterface {
         setContentView(R.layout.activity_main)
 
 
+
+
         floatingActionButton.setOnClickListener {
             onfabclicked()
         }
@@ -74,22 +76,11 @@ class MainActivity : AppCompatActivity(),MyRecyclerInterface {
         var name : String? = null
         val title:String = list.List[position].name?:""
         val text:String = list.List[position].text?:""
-        AlertDialog.Builder(this)
-            .setTitle(title)
-            .setMessage("$text")
-            .setPositiveButton("오케이"){dialog, id->
-                Log.d(TAG,"MainActivity - 다이얼로그 확인 버튼 누름")
-            }
-            .setNegativeButton("지우기"){dialog,id->
-                list.List.removeAt(position)
-                my_recycler_view.apply {
-                    layoutManager = LinearLayoutManager(this@MainActivity,LinearLayoutManager.VERTICAL,false)
+        val intent = Intent(this,ViewMemo::class.java)
+        intent.putExtra("text",text)
+        intent.putExtra("title",title)
+        intent.putExtra("position",position)
+        startActivity(intent)
 
-                    //어답터 장착
-                    adapter = myRecyclerAdapter
-                }
-
-            }
-            .show()
     }
 }

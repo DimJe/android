@@ -15,6 +15,7 @@ class MyViewHolder(itemView : View,
     val TAG: String = "로그"
 
     private  val usernameTextView = itemView.user_name_text
+    private  val usernameTextView2 = itemView.user_name_title
     private  val profileImageView = itemView.profile_img
     private  var myRecyclerInterface : MyRecyclerInterface? =null
 
@@ -28,7 +29,8 @@ class MyViewHolder(itemView : View,
     //데이터와 뷰를 묶는다.
     fun bind(myModel: MyModel){
         Log.d(TAG,"MyViewHolder - bind() called")
-        usernameTextView.text = myModel.name
+        usernameTextView.text = myModel.text
+        usernameTextView2.text = myModel.name
         profileImageView.setImageResource(R.drawable.comment)
     }
 
