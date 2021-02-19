@@ -26,9 +26,9 @@ class MyViewHolder(itemView : View,
     }
 
     //데이터와 뷰를 묶는다.
-    fun bind(myModel: MyModel){
+    fun bind(myModel: Memo){
         Log.d(TAG,"MyViewHolder - bind() called")
-        usernameTextView.text = myModel.name
+        usernameTextView.text = myModel.title
         profileImageView.setImageResource(R.drawable.comment)
     }
 

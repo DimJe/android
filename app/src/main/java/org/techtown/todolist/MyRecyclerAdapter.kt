@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class MyRecyclerAdapter(myRecyclerInterface:MyRecyclerInterface) :RecyclerView.Adapter<MyViewHolder>(){
+class MyRecyclerAdapter(myRecyclerInterface:MyRecyclerInterface,val memos:List<Memo>) :RecyclerView.Adapter<MyViewHolder>(){
 
     val TAG: String = "로그"
-    private var modelList = ArrayList<MyModel>()
+    private var modelList = listOf<Memo>()
 
     private var myRecyclerInterface : MyRecyclerInterface
 
@@ -28,13 +28,13 @@ class MyRecyclerAdapter(myRecyclerInterface:MyRecyclerInterface) :RecyclerView.A
     //뷰홀더가 묶였을때
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         Log.d(TAG,"MyRecyclerAdapter - onBindViewHolder() called //position = $position")
-        holder.bind(this.modelList[position])
+        holder.bind(memos[position])
 
 
     }
 
-    fun submitList(modelList:ArrayList<MyModel>){
-        this.modelList = modelList
+    fun submitList(memos: List<Memo>){
+        this.modelList = memos
     }
 
 }
